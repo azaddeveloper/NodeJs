@@ -39,6 +39,7 @@ Primitive Types
 # How to create a simple server in Node.js that returns Hello World?
 
 **Step 01**: Create a project directory
+
 ``
 mkdir myapp
 cd myapp
