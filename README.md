@@ -37,11 +37,13 @@ Primitive Types
   or receiving packets over the network.
 
 # How to create a simple server in Node.js that returns Hello World?
+
 **Step 01**: Create a project directory
 ``
 mkdir myapp
 cd myapp
 ``
+
 **Step 02**: Initialize project and link it to npm
 ``
 npm init
