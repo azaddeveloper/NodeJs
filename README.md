@@ -76,3 +76,6 @@ app.listen(3000, function () {
 ```
 node app.js  
 ```
+
+# Explain callback in Node.js.
+  Node. js, being an asynchronous platform, doesn't wait around for things like file I/O to finish Node. js uses callbacks. A callback is a function called at the completion of   a given task; this prevents any blocking, and allows other code to be run in the meantime.
