@@ -76,6 +76,11 @@ app.listen(3000, function () {
 ```
 node app.js  
 ```
+# What is the diffrence between synchronous and asynchronous.
+
+In **synchronous** operations tasks are performed one at a time and only when one is completed, the following is unblocked. In other words, you need to wait for a task to finish to move to the next one. 
+
+In **asynchronous** operations, on the other hand, you can move to another task before the previous one finishes. This way, with asynchronous programming you’re able to deal with multiple requests simultaneously, thus completing more tasks in a much shorter period of time.   
 
 # Explain callback in Node.js.
   Node. js, being an asynchronous platform, doesn't wait around for things like file I/O to finish Node. js uses callbacks. A callback is a function called at the completion of   a given task; this prevents any blocking, and allows other code to be run in the meantime.
@@ -95,3 +100,24 @@ node app.js
      });
   });
   ```
+  Techniques for avoiding callback hell
+  - Using Async.js
+  - Using Promises
+  - Using Async-Await
+ # Callback is syncronous or asyncoronous
+ Basically - if a callback does all it's work before returning to the caller, it's "synchronous". If it can return to the caller immediately after it's invoked - and the caller 
+ and the callback can work in parallel - then it's "asynchronous". The problem with synchronous callbacks is they can appear to "hang".
+
+# What is Promise.
+Promise is use to handle the result of an asynchronous task once it has completed or encountered an error. Promises make writing asynchronous code easier. They’re an improvement on the callback pattern.
+The core idea behind promises is that a promise represents the result of an asynchronous operation. A promise is in one of three different states:
+
+- pending - The initial state of a promise.
+- fulfilled - The state of a promise representing a successful operation.
+- rejected - The state of a promise representing a failed operation. Once a promise is fulfilled or rejected, it is immutable (i.e. it can never change again).
+Creating a Promise
+```
+var myPromise = new Promise(function(resolve, reject){
+   ....
+})
+```
