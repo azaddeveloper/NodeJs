@@ -79,3 +79,19 @@ node app.js
 
 # Explain callback in Node.js.
   Node. js, being an asynchronous platform, doesn't wait around for things like file I/O to finish Node. js uses callbacks. A callback is a function called at the completion of   a given task; this prevents any blocking, and allows other code to be run in the meantime.
+  
+ # What is callback hell in Node.js?
+  Callback hell is a phenomenon that afflicts a JavaScript developer when he tries to execute multiple asynchronous operations one after the other.
+
+  An asynchronous function is one where some external activity must complete before a result can be processed; it is “asynchronous” in the sense that there is an unpredictable   amount of time before a result becomes available. Such functions require a callback function to handle errors and process the result.
+  ```
+  async_A(function(){
+   async_B(function(){
+       async_C(function(){
+           async_D(function(){
+           ....
+           });
+       });
+     });
+  });
+  ```
