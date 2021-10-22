@@ -84,6 +84,15 @@ In **asynchronous** operations, on the other hand, you can move to another task 
 
 # Explain callback in Node.js.
   Node. js, being an asynchronous platform, doesn't wait around for things like file I/O to finish Node. js uses callbacks. A callback is a function called at the completion of   a given task; this prevents any blocking, and allows other code to be run in the meantime.
+  ```
+  function printString(){
+   console.log("Tom"); 
+   setTimeout(function()  { console.log("Jacob"); }, 300); 
+  console.log("Mark")
+  }
+
+  printString();
+  ```
   
  # What is callback hell in Node.js?
   Callback hell is a phenomenon that afflicts a JavaScript developer when he tries to execute multiple asynchronous operations one after the other.
@@ -115,9 +124,44 @@ The core idea behind promises is that a promise represents the result of an asyn
 - pending - The initial state of a promise.
 - fulfilled - The state of a promise representing a successful operation.
 - rejected - The state of a promise representing a failed operation. Once a promise is fulfilled or rejected, it is immutable (i.e. it can never change again).
+
 Creating a Promise
 ```
 var myPromise = new Promise(function(resolve, reject){
    ....
 })
+```
+# What is promise chaining 
+ Promise chaining is a syntax that allows you to chain together multiple asynchronous tasks in a specific order. This is great for complex code where one asynchronous task 
+ needs to be performed after the completion of a different asynchronous task.
+```
+let p = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve(10);
+    }, 3 * 100);
+});
+
+p.then((result) => {
+    console.log(result);
+    return result * 2;
+}).then((result) => {
+    console.log(result);
+    return result * 3;
+});
+```
+# What are the advantages of using promises instead of callbacks?
+The main advantage of using promise is you get an object to decide the action that needs to be taken after the async task completes. This gives more manageable code and avoids callback hell.
+
+# What is async await in Nodejs?
+With Node v8, the async/await feature was officially rolled out by the Node to deal with Promises and function chaining. The functions need not to be chained one after another, simply await the function that returns the Promise. But the function async needs to be declared before awaiting a function returning a Promise.
+
+Await is basically syntactic sugar for Promises. It makes your asynchronous code look more like synchronous/procedural code, which is easier for humans to understand.
+
+Syntax of Async and Await:
+```
+async function printMyAsync(){
+  await printString("one")
+  await printString("two")
+  await printString("three")
+}
 ```
