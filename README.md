@@ -229,3 +229,28 @@ Socket.- **io**: Its a node.js realtime framework server.
 - **Xml2js**: A Simple XML to JavaScript object converter.
 - **Yo**: A CLI tool for running Yeoman generators
 - **Zmq**: Bindings for node.js and io.js to ZeroMQ .It is a high-performance asynchronous messaging library, aimed at use in distributed or concurrent applications.
+  
+ # what is cron job and how to set it?
+  Cron provides a way to repeat a task at a specific time interval. 
+  ```
+  npm install express@4.17.1 node-cron@2.0.3
+  ```
+  Next, add the following lines of code to your index.js file between the app declaration and app.listen:
+  ```
+  const cron = require('node-cron');
+  const express = require('express');
+  cron.schedule('* * * * *', function() {
+  console.log('running a task every minute');
+  });
+  
+    * * * * * *
+  | | | | | |
+  | | | | | day of week
+  | | | | month
+  | | | day of month
+  | | hour
+  | minute
+  second ( optional )
+  ```
+  Add the express web framework and node-cron module by running the following command:
+  
