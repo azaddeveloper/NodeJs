@@ -171,6 +171,31 @@ Node.js is single-threaded for async processing. By doing async processing on a 
 # Is it possible to achieve multithreading in NodeJS?
 No, you can't use threads in node.js. It uses asynchronous model of code execution. Behind the asynchronous model, the node itself uses threads. But as far as I know, they can't be accessed in the app without additional libraries.With the asynchronous model you don't actually need threads. 
 
+# If Node.js is single threaded then how does it handle concurrency?
+The main loop is single-threaded and all async calls are managed by libuv library.
+```
+For example:
+
+const crypto = require("crypto");
+const start = Date.now();
+function logHashTime() {
+ crypto.pbkdf2("a", "b", 100000, 512, "sha512", () => {
+console.log("Hash: ", Date.now() - start);
+ });
+}
+logHashTime();
+logHashTime();
+logHashTime();
+logHashTime();
+This gives the output:
+
+Hash: 1213
+Hash: 1225
+Hash: 1212
+Hash: 1222
+```
+This is because libuv sets up a thread pool to handle such concurrency. How many threads will be there in the thread pool depends upon the number of cores but you can override this.
+
 # how to achive multi threading in NodeJS?
 # NodeJS really single threaded or not?
 # What is Event loop in Node.js? How does it work?
@@ -244,13 +269,40 @@ Socket.- **io**: Its a node.js realtime framework server.
   });
   
     * * * * * *
-  | | | | | |
-  | | | | | day of week
-  | | | | month
-  | | | day of month
-  | | hour
-  | minute
-  second ( optional )
+    | | | | | |
+    | | | | | day of week
+    | | | | month
+    | | | day of month
+    | | hour
+    | minute
+    second ( optional )
   ```
   Add the express web framework and node-cron module by running the following command:
   
+  # What is jwt token and what its payload contain which algorithm it used ?
+    JWT, or JSON Web Token, is an open standard used to share security information between two parties — a client and a server. Each JWT contains encoded JSON objects, including 
+    a set of claims. JWTs are signed using a cryptographic algorithm to ensure that the claims cannot be altered after the token is issued.
+ # What is express js.
+  ExpressJS is a prebuilt NodeJS framework that can help you in creating server-side web applications faster and smarter. Simplicity, minimalism, flexibility, scalability are 
+  some of its characteristics and since it is made in NodeJS itself, it inherited its performance as well.
+ #  What is middleware?
+  Middleware comes in between your request and business logic. It is mainly used to capture logs and enable rate limit, routing, authentication, basically whatever that is not a   part of business logic. There are third-party middleware also such as body-parser and you can write your own middleware for a specific use case.
+
+# what is core module of  nodejs 
+  These core modules are compiled into its binary distribution and load automatically when Node. ... http module includes classes, methods and events to create Node. js http    
+  server. url. url module includes methods for URL resolution and parsing.
+# Why is LIBUV needed in Node JS?
+  libuv. Another important dependency is libuv, a C library that is used to abstract non-blocking I/O operations to a consistent interface across all supported platforms. It 
+  provides mechanisms to handle file system, DNS, network, child processes, pipes, signal handling, polling and streaming.
+# what is non blocking i/o means in node?
+  Non-blocking I/O operations allow a single process to serve multiple requests at the same time. Instead of the process being blocked and waiting for I/O operations to 
+  complete, the I/O operations are delegated to the system, so that the process can execute the next piece of code.
+# what is cluster in nodejs why we used it
+# how does import exports and require work internally 
+# how nodejs run behind the scenes 
+# what is drwaback of nodejs 
+# how nodejs is faster then other language 
+# what is lts  and  what is current lts of nodejs 
+# where we can run nodejs 
+# what is setTimeout in nodejs 
+# what is global module in nodejs 
