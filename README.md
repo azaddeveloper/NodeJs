@@ -190,7 +190,8 @@ The only option is to automate the update / security audit of your dependencies.
 - Snyk
 - npm audit
 - npm audit fix
-What are some of the most popular packages of Node.js?
+
+# What are some of the most popular packages of Node.js?
 - **Async**: Async is a utility module which provides straight-forward, powerful functions for working with asynchronous JavaScript.
 - **Browserify**: Browserify will recursively analyze all the require() calls in your app in order to build a bundle you can serve up to the browser in a single <script> tag.
 - **Bower**: Bower is a package manager for the web. It works by fetching and installing packages from all over, taking care of hunting, finding, downloading, and saving the stuff you’re looking for.
